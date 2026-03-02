@@ -2,82 +2,105 @@ import streamlit as st
 from pathlib import Path
 
 st.set_page_config(
-    page_title="Sea Lighter | Gardening & Handyman London",
+    page_title="Sea Lighter | Premium Gardening & Handyman London",
     page_icon="🌿",
     layout="wide"
 )
 
+# =============================
+# CONFIGURAÇÕES
+# =============================
 ASSETS = Path("assets")
 LOGO = ASSETS / "logo.jpg"
 
+WHATSAPP_LINK = "https://wa.me/447480145752?text=Hello%2C%20I%20would%20like%20to%20request%20a%20quotation%20for%20your%20gardening%20and%20handyman%20services.%20Could%20you%20please%20provide%20more%20details%20about%20availability%20and%20pricing%3F"
+
+INSTAGRAM_LINK = "https://www.instagram.com/sea_lighter?igsh=MTgxMGt5ZmRteW5hYg=="
+
 # =============================
-# CSS PROFISSIONAL
+# CSS PREMIUM
 # =============================
 st.markdown("""
 <style>
 
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
 header {visibility: hidden;}
 
-html, body, [class*="css"]  {
+html, body, [class*="css"] {
     font-family: 'Segoe UI', sans-serif;
 }
 
 .hero {
-    background: linear-gradient(135deg,#0f766e,#22c55e);
-    padding: 80px 20px;
-    border-radius: 20px;
+    background: linear-gradient(135deg,#0f172a,#0f766e);
+    padding: 100px 20px;
+    border-radius: 25px;
     text-align: center;
     color: white;
-    margin-bottom: 40px;
+    margin-bottom: 70px;
 }
 
-.section {
-    padding: 60px 0px;
+.hero h1 {
+    font-size: 48px;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 20px;
+    opacity: 0.9;
 }
 
 .card {
-    background: #f9fafb;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    transition: 0.3s;
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: 0.3s ease;
+    height: 100%;
 }
 
 .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px);
 }
 
 .footer {
     text-align:center;
-    padding:30px;
+    padding:40px;
     font-size:0.9rem;
-    color:gray;
+    color:#888;
+    margin-top:80px;
     border-top:1px solid #eee;
-    margin-top:50px;
 }
 
-/* WhatsApp Floating Button */
+/* WhatsApp Float */
 .whatsapp-float {
     position: fixed;
-    width: 60px;
-    height: 60px;
+    width: 65px;
+    height: 65px;
     bottom: 25px;
     right: 25px;
     background-color: #25D366;
     color: white;
     border-radius: 50px;
-    text-align: center;
-    font-size: 30px;
-    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-    z-index: 100;
+    font-size: 28px;
     display:flex;
     align-items:center;
     justify-content:center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    z-index: 100;
     text-decoration:none;
 }
 
-.whatsapp-float:hover {
-    background-color: #1ebe5d;
+/* Instagram Button */
+.instagram-btn {
+    display:inline-block;
+    padding:14px 30px;
+    border-radius:12px;
+    background: linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+    margin-top:20px;
 }
 
 </style>
@@ -86,129 +109,113 @@ html, body, [class*="css"]  {
 # =============================
 # HEADER
 # =============================
-col1, col2 = st.columns([1,5])
+col1, col2 = st.columns([1,6])
 
 with col1:
     if LOGO.exists():
-        st.image(str(LOGO), width=120)
+        st.image(str(LOGO), width=110)
 
 with col2:
     st.markdown("## Sea Lighter")
-    st.markdown("### Professional Gardening & Handyman Services in London")
+    st.markdown("Premium Gardening & Property Maintenance in London")
 
 st.divider()
 
 # =============================
-# HERO
+# HERO SECTION
 # =============================
-st.markdown("""
+st.markdown(f"""
 <div class="hero">
-    <h1>Transforming Gardens & Homes Across London</h1>
-    <p>Reliable • Professional • Affordable</p>
+    <h1>Exceptional Gardens. Flawless Maintenance.</h1>
+    <p>Professional Gardening & Handyman Services Across London</p>
     <br>
-    <a href="https://wa.me/447480145752" style="background:white;color:#0f766e;padding:15px 30px;border-radius:10px;text-decoration:none;font-weight:bold;">
-    Request a Free Quote
+    <a href="{WHATSAPP_LINK}" style="background:white;color:#0f172a;padding:16px 40px;border-radius:14px;text-decoration:none;font-weight:bold;font-size:16px;">
+    Request a Professional Quote
     </a>
 </div>
 """, unsafe_allow_html=True)
 
 # =============================
-# ABOUT SECTION
+# ABOUT
 # =============================
-st.markdown("## 🌿 About Sea Lighter")
+st.markdown("## About Sea Lighter")
 
 st.write("""
-Sea Lighter provides high-quality gardening and handyman services across London.
-We pride ourselves on reliability, attention to detail, and delivering outstanding
-results for residential and commercial properties.
+Sea Lighter delivers high-end gardening and handyman services tailored for
+London homeowners and property managers. Our approach combines reliability,
+attention to detail and premium finishing standards.
 
-Whether you need regular garden maintenance, landscaping improvements, or small home repairs,
-we are ready to help.
+We ensure every project reflects quality, professionalism and long-term durability.
 """)
 
 # =============================
 # SERVICES
 # =============================
-st.markdown("## 🛠 Our Services")
+st.markdown("## Our Services")
 
-col1, col2, col3 = st.columns(3)
+services = {
+    "Gardening": [
+        "Lawn maintenance",
+        "Hedge trimming",
+        "Garden clearance",
+        "Seasonal garden care"
+    ],
+    "Landscaping": [
+        "Turf installation",
+        "Decking & fencing",
+        "Patio restoration",
+        "Pressure washing"
+    ],
+    "Handyman": [
+        "General repairs",
+        "Interior & exterior painting",
+        "Furniture assembly",
+        "Property maintenance"
+    ]
+}
 
-with col1:
-    st.markdown('<div class="card">', unsafe_allow_html=True)
-    st.subheader("🌿 Gardening")
-    st.write("""
-    • Lawn mowing  
-    • Hedge trimming  
-    • Weed removal  
-    • Garden clearance  
-    • Seasonal maintenance  
-    """)
-    st.markdown('</div>', unsafe_allow_html=True)
+cols = st.columns(3)
 
-with col2:
-    st.markdown('<div class="card">', unsafe_allow_html=True)
-    st.subheader("🪴 Landscaping")
-    st.write("""
-    • Turf installation  
-    • Fence repairs  
-    • Decking  
-    • Patio cleaning  
-    • Pressure washing  
-    """)
-    st.markdown('</div>', unsafe_allow_html=True)
-
-with col3:
-    st.markdown('<div class="card">', unsafe_allow_html=True)
-    st.subheader("🔧 Handyman")
-    st.write("""
-    • General repairs  
-    • Painting  
-    • Furniture assembly  
-    • Minor plumbing  
-    • Property maintenance  
-    """)
-    st.markdown('</div>', unsafe_allow_html=True)
+for col, (title, items) in zip(cols, services.items()):
+    with col:
+        st.markdown('<div class="card">', unsafe_allow_html=True)
+        st.subheader(title)
+        for item in items:
+            st.write(f"• {item}")
+        st.markdown('</div>', unsafe_allow_html=True)
 
 # =============================
-# GALLERY
+# ORGANIZED GALLERY
 # =============================
-st.markdown("## 📸 Recent Projects")
+st.markdown("## Recent Projects")
 
 if ASSETS.exists():
-    images = list(ASSETS.glob("*.jpg"))
-    cols = st.columns(4)
-    for i, img in enumerate(images):
-        cols[i % 4].image(str(img), use_container_width=True)
+    images = sorted(ASSETS.glob("work*.jpg"))
+    rows = [images[i:i+4] for i in range(0, len(images), 4)]
+
+    for row in rows:
+        cols = st.columns(len(row))
+        for col, img in zip(cols, row):
+            col.image(str(img), use_container_width=True)
 
 # =============================
-# WHY CHOOSE US
+# INSTAGRAM SECTION
 # =============================
-st.markdown("## ⭐ Why Choose Sea Lighter?")
+st.markdown("## Follow Our Work")
 
-st.write("""
-✔ Fully insured  
-✔ Competitive pricing  
-✔ Fast response time  
-✔ Trusted by local London clients  
-✔ 5-star service attitude  
-""")
-
-# =============================
-# SERVICE AREA
-# =============================
-st.markdown("## 📍 Areas We Cover")
-
-st.write("""
-We proudly serve London and surrounding areas including:
-Central London, South London, West London and nearby boroughs.
-""")
+st.markdown(f"""
+<a href="{INSTAGRAM_LINK}" 
+class="instagram-btn" target="_blank">
+Follow Sea Lighter on Instagram
+</a>
+""", unsafe_allow_html=True)
 
 # =============================
 # FOOTER
 # =============================
 st.markdown("""
 <div class="footer">
-Sea Lighter – Gardening & Handyman Services in London<br>
+Sea Lighter – Premium Gardening & Handyman Services in London<br>
 © 2026 Sea Lighter. All rights reserved.
 </div>
 """, unsafe_allow_html=True)
@@ -216,9 +223,8 @@ Sea Lighter – Gardening & Handyman Services in London<br>
 # =============================
 # WHATSAPP FLOAT BUTTON
 # =============================
-st.markdown("""
-<a href="https://wa.me/447480145752" class="whatsapp-float" target="_blank">
+st.markdown(f"""
+<a href="{WHATSAPP_LINK}" class="whatsapp-float" target="_blank">
 💬
 </a>
 """, unsafe_allow_html=True)
-
