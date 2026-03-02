@@ -37,7 +37,7 @@ html, body, [class*="css"] {
     border-radius: 25px;
     text-align: center;
     color: white;
-    margin-bottom: 70px;
+    margin-bottom: 40px;
 }
 
 .hero h1 {
@@ -48,6 +48,12 @@ html, body, [class*="css"] {
 .hero p {
     font-size: 20px;
     opacity: 0.9;
+}
+
+.hero .cta {
+    margin-top: 25px;
+    font-size: 18px;
+    font-weight: 500;
 }
 
 .card {
@@ -128,10 +134,9 @@ st.markdown(f"""
 <div class="hero">
     <h1>Exceptional Gardens. Flawless Maintenance.</h1>
     <p>Professional Gardening & Handyman Services Across London</p>
-    <br>
-    <a href="{WHATSAPP_LINK}" style="background:white;color:#0f172a;padding:16px 40px;border-radius:14px;text-decoration:none;font-weight:bold;font-size:16px;">
-    Request a Professional Quote
-    </a>
+    <div class="cta">
+        Contact us today – <a href="{WHATSAPP_LINK}" style="color:white;font-weight:bold;text-decoration:underline;">click here</a> to request your professional quotation.
+    </div>
 </div>
 """, unsafe_allow_html=True)
 
@@ -139,13 +144,10 @@ st.markdown(f"""
 # ABOUT
 # =============================
 st.markdown("## About Sea Lighter")
-
 st.write("""
 Sea Lighter delivers high-end gardening and handyman services tailored for
 London homeowners and property managers. Our approach combines reliability,
-attention to detail and premium finishing standards.
-
-We ensure every project reflects quality, professionalism and long-term durability.
+attention to detail, and premium finishing standards.
 """)
 
 # =============================
@@ -175,7 +177,6 @@ services = {
 }
 
 cols = st.columns(3)
-
 for col, (title, items) in zip(cols, services.items()):
     with col:
         st.markdown('<div class="card">', unsafe_allow_html=True)
@@ -192,7 +193,6 @@ st.markdown("## Recent Projects")
 if ASSETS.exists():
     images = sorted(ASSETS.glob("work*.jpg"))
     rows = [images[i:i+4] for i in range(0, len(images), 4)]
-
     for row in rows:
         cols = st.columns(len(row))
         for col, img in zip(cols, row):
@@ -202,7 +202,6 @@ if ASSETS.exists():
 # INSTAGRAM SECTION
 # =============================
 st.markdown("## Follow Our Work")
-
 st.markdown(f"""
 <a href="{INSTAGRAM_LINK}" 
 class="instagram-btn" target="_blank">
@@ -221,10 +220,10 @@ Sea Lighter – Premium Gardening & Handyman Services in London<br>
 """, unsafe_allow_html=True)
 
 # =============================
-# WHATSAPP FLOAT BUTTON
+# WHATSAPP FLOAT BUTTON COM LOGO
 # =============================
 st.markdown(f"""
 <a href="{WHATSAPP_LINK}" class="whatsapp-float" target="_blank">
-💬
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width:32px;height:32px;">
 </a>
 """, unsafe_allow_html=True)
